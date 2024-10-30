@@ -1,0 +1,187 @@
+{
+  "main": {
+    "id": "9885860bd032ab0c",
+    "type": "split",
+    "children": [
+      {
+        "id": "51d4b527b56c5a28",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bae6771746b5564d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "log service.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "log service"
+            }
+          },
+          {
+            "id": "702886a27227575a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "log service.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "log service"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "37f2b9202ae1cc55",
+    "type": "split",
+    "children": [
+      {
+        "id": "37162d626334e349",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "11c508a9f0f2fe2a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "d226a1b50fbc16ff",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "1a63a01ef2d9e755",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "c2e75dfdc8fb14cf",
+    "type": "split",
+    "children": [
+      {
+        "id": "12b1686dd05fbf8b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7a188c0c5b7600f1",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "log service.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for log service"
+            }
+          },
+          {
+            "id": "8a1f66398c6238e3",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "log service.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from log service"
+            }
+          },
+          {
+            "id": "e3ce117130da35d3",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "7dbd91a12fdc4245",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "log service.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of log service"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "702886a27227575a",
+  "lastOpenFiles": [
+    "Pasted image 20241030085040.png",
+    "README.md",
+    "log service.md",
+    "mother app.md"
+  ]
+}
