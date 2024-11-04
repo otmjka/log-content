@@ -4,35 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "51d4b527b56c5a28",
+        "id": "4ae59392f67e9472",
         "type": "tabs",
         "children": [
           {
-            "id": "bae6771746b5564d",
+            "id": "bcf08374f637bb49",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "log service.md",
+                "file": "microservices via aws.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "log service"
+              "title": "microservices via aws"
             }
           },
           {
-            "id": "702886a27227575a",
+            "id": "591525a88604332c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "log service.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "log service"
+              "title": "README"
             }
           }
         ],
@@ -177,10 +177,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "702886a27227575a",
+  "active": "591525a88604332c",
   "lastOpenFiles": [
-    "mother app.md",
+    "simple fastify app, deploy via github actions to AWS ECS.md",
+    "microservices via aws.md",
     "log service.md",
+    "mother app.md",
     "Pasted image 20241030085040.png",
     "README.md"
   ]

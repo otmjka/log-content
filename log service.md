@@ -37,3 +37,20 @@ docker compose -f docker/production/compose.yaml up
 now need create `production` branch, with CI/CD
 build image
 deploy to aws
+
+crete file 
+
+`.github/workflows/deploy.yaml`
+
+create repository
+
+ECR_REPOSITORY: akjmto/log-blog
+
+ECS_SERVICE: auth-back-service
+
+need to understand vpc
+https://redrobot.dev/learn/articles/aws-vpc
+https://medium.com/@redrobotdev/next-js-deployment-using-ecs-with-fargate-1a730a8d0cb1
+
+https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
+
