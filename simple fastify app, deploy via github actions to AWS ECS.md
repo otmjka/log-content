@@ -96,156 +96,77 @@ ECR_REPOSITORY: akjmto/aws-node-app
 
 [install terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 
-there are some init steps:
-
-```terraform
-# terraform/provider.tf
-
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
-
-provider "aws" {
-  region = var.aws_region
-}
-
-
-# terraform/variables.tf
-
-variable "aws_region" {
-  description = "AWS region to deploy to"
-  type        = string
-  default     = "eu-north-1"
-}
-
-variable "app_name" {
-  description = "Application name"
-  type        = string
-  default     = "aws-node-app"
-}
-
-
-variable "container_image" {
-  description = "Container image URI"
-  type        = string
-  default     = "762233768038.dkr.ecr.eu-north-1.amazonaws.com/akjmto/aws-node-app"
-}
-
-variable "container_port" {
-  description = "Port exposed by the container"
-  type        = number
-  default     = 80
-}
-
-
-# terraform/terraform.tfvars
-# copy defaults of terraform/variables.tf
-
-aws_region = "eu-north-1"
-app_name = "aws-node-app"
-container_port = 80
-container_image = "762233768038.dkr.ecr.eu-north-1.amazonaws.com/akjmto/aws-node-app"
+there are in [./terraform/](https://github.com/otmjka/aws-node-app/blob/main/terraform/) folder needed configs
 
 ```
-
-`container_image` - after repository creation
-
-```terraform
-
-# File: ecr.tf
-
-resource "aws_ecr_repository" "akjmto_aws_node_app" {
-  name                 = "akjmto/aws-node-app"
-  image_tag_mutability = "MUTABLE"
-
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-}
-
+├── terraform
+│   ├── main.tf
+│   ├── provider.tf
+│   └── variables.tf
 ```
+
+we need to initializate `terraform`
 
 ```bash
-terraform plan
 terraform init
-
 ```
-go to aws ecr repositories
-[my repositories](https://eu-north-1.console.aws.amazon.com/ecr/private-registry/repositories?region=eu-north-1)
 
-and copy `repository name`, `URI`
+```tfvars
+aws_region = "eu-north-1"
+aws_ecs_task_definitionArn = "arn:aws:ecs:eu-north-1:111111111111:task-definition/aws-node-app-task-family:2"
+desired_count = 1
+app_name = "aws-node-app"
+cluster_name = "otmjka-microservices"
+service_name = "aws-node-app-service"
+container_image = "111111111111.dkr.ecr.{aws_region}.amazonaws.com/akjmto/aws-node-app"
+container_port = 80
+availability_zones = [ "eu-north-1a", "eu-north-1b" ]
+vpc_name = "aws-node-app-vpc"
+alb_name = "aws-node-app-load-balancer"
+repo_name = "akjmto/aws-node-app"
+task_def_family_name = "aws-node-app-task-def-family"
+container_name = "aws-node-app"
+tg_name = "aws-node-app-tg"
+ecs_task_execution_role_name = "aws-node-app-ecs-task-execution-role"
+```
+
+to compile our files we should perform:
+```bash
+terraform plan
+```
+
+and if all ok perfom `apply`:
+
+```bash
+terraform apply
+```
+
+farmim for deploy.yaml
 
 ```yaml
-.github/workflows/deploy.yaml
-ECR_REPOSITORY: akjmto/aws-node-app
+AWS_REGION: vars.aws_region # terraform/variables.tf
+ECR_REPOSITORY: vars.repo_name # terraform/variables.tf
+ECS_CLUSTER: cluster_name # terraform/variables.tf
+ECS_SERVICE: service_name # terraform/variables.tf
 
-# terraform
-container_image: 762233768038.dkr.ecr.eu-north-1.amazonaws.com/akjmto/aws-node-app
-```
+# file, e.g. .aws/task-definition.json
 
-oks. remain
+CONTAINER_NAME:
 
-```
-ECS_SERVICE
-ECS_TASK_DEFINITION
-```
+${{ vars.CONTAINER_NAME }} # set this to the name of the container in the
 
-### Task Definition [ECS_TASK_DEFINITION]
-
-`!!!TODO: short defenition, somehow to hide with ref to micro article`
-```
-
-**Task Definition in AWS ECS**
-
-• **Description**: A Task Definition is a template for running tasks in AWS ECS (Elastic Container Service). It specifies which Docker containers to run and how to configure them.
-
-• **Main Features**:
-
-• **Container Definition**: It specifies which Docker images to launch, their network settings, CPU and memory limits, environment variables, and other parameters.
-
-• **Network Settings**: The Task Definition can define networking (for instance, associating with a VPC and subnets) and security policies.
-
-• **Dependency Management**: It allows you to define the order in which containers should start and the rules for restarting them in case of failure.
-
-• **Usage**: Task Definitions are used to describe the configuration of one or more containers that are to run in ECS. For example, a Task Definition might include both a web server container and a database container, which together make up a single application.
-
-**How AWS ECR and Task Definitions Work Together**
-
-When a Docker image is uploaded to AWS ECR, it can be referenced in a Task Definition so ECS (or another container orchestrator) knows which image to run and which parameters to apply. The Task Definition includes a link to the specific Docker image in ECR (such as by URL), and when the task is started, ECS automatically pulls the image from ECR and deploys the container.
-```
-
-in our case ECS_TASK_DEFINITION is a path to a json file. 
-
-content for this you can create by your self, go to 
-
-[AWS ECS -> Task Definitions](https://eu-north-1.console.aws.amazon.com/ecs/v2/task-definitions?region=eu-north-1)`->` Create new task defenition 
+# containerDefinitions section of your task definition
 
 ```
-Task definition family: aws-node-app-task-family
-cpu 0.5 mem 1 GB
 
-Container 1
+ECS_TASK_DEFINITION:./aws-ecs-task-defenition.json # set this to the path to your Amazon ECS task definition
 
-name: aws-node-app
-uri: 762233768038.dkr.ecr.eu-north-1.amazonaws.com/akjmto/aws-node-app:latest
-
-Environment variables:
-
-PORT 80
-
--> CREATE !
-```
 
 after go to 
 ```
 1. [Amazon Elastic Container Service]
 2. [Task definitions]
-3. [aws-node-app-task-family]
+3. [vars.task_def_family_name]
 4. [Revision 1]
 5. Containers
 6. JSON
@@ -254,40 +175,6 @@ after go to
 9. remove useless taskDefinitionArn, revision, compatibilities, registeredAt, registeredBy
 ```
 
+Here is example
 
-`./aws-ecs-task-defenition.json`
-
-```json
-{
-"family": "aws-node-app-task-family",
-"containerDefinitions": [{
-	"name": "aws-node-app",
-	"image": "...",
-	"portMappings": [{
-		"name": "aws-node-app-80-tcp",
-		"containerPort": 80,
-		"hostPort": 80,
-		"protocol": "tcp",
-		"appProtocol": "http"
-	}],
-	"essential": true,
-	"environment": [{
-		"name": "PORT",
-		"value": "80"}],
-...	
-}
-```
-
-### create service
-
-```
-# terraform/ecs.tf
-...
-
-```
-
-# .github/workflows/deploy.yaml
-
-[./.github/workflows/deploy.yaml]
-[copy from github docs](https://docs.github.com/en/actions/use-cases-and-examples/deploying/deploying-to-amazon-elastic-container-service)
-
+[./aws-ecs-task-defenition.json](https://github.com/otmjka/aws-node-app/blob/main/aws-ecs-task-defenition.json)
