@@ -1,5 +1,14 @@
-
 [log-obsidian-github-vault-app Github repo](https://github.com/otmjka/log-obsidian-github-vault-app)
+
+TODO:
+try https://remarkjs.github.io/react-markdown/
+image support
+code snippets
+embed video
+
+idea go to github
+human-readability name entry point
+that guide to other parts of logs
 
 ```
 
@@ -14,7 +23,7 @@
 [+] push to repository
 
 	https://github.com/otmjka/log-content
-	
+
 [+] create next.js app
 [+] fetch repository
 [+] get list articles
@@ -23,7 +32,7 @@
 
 ```
 
-[+] next make a repository as docker container 
+[+] next make a repository as docker container
 
 [Nextjs docker doc ](https://nextjs.org/docs/app/building-your-application/deploying#docker-image)
 
@@ -38,7 +47,7 @@ now need create `production` branch, with CI/CD
 build image
 deploy to aws
 
-crete file 
+crete file
 
 `.github/workflows/deploy.yaml`
 
@@ -53,4 +62,3 @@ https://redrobot.dev/learn/articles/aws-vpc
 https://medium.com/@redrobotdev/next-js-deployment-using-ecs-with-fargate-1a730a8d0cb1
 
 https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile
-
