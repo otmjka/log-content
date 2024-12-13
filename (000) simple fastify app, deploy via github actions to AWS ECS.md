@@ -1,5 +1,16 @@
 result code can be found in the [project repository](https://github.com/otmjka/aws-node-app)
 
+For me process of deployment myself tiny applications always was painful.
+
+choosing platform, imagine how "everything" will work as a whole, where to start, what are exact steps.
+ 
+ from point - you have working app in development environment 
+ to point - your application placed in internet and can be opened by someone in his browser.
+
+prerequirements:
+
+
+
 the goals are:
 
 1. set up a deploy the app to the aws ecs via pushing to `production` branch
